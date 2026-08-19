@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Python programming course overview for data science, machine learning, AI, and software development.">
+  <title>Python Programming | Course Information</title>
+  <style>
+    :root { --ink: #17212b; --muted: #52616b; --paper: #f7f4ee; --surface: #fffdf8; --line: #d8d0c2; --teal: #087f8c; --teal-dark: #075b64; --coral: #d96c4b; --shadow: 0 18px 50px rgba(23, 33, 43, 0.12); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Georgia, "Times New Roman", serif; line-height: 1.65; }
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; opacity: 0.38; background-image: linear-gradient(135deg, rgba(8, 127, 140, 0.08) 1px, transparent 1px), linear-gradient(45deg, rgba(217, 108, 75, 0.06) 1px, transparent 1px); background-size: 34px 34px; }
+    a { color: var(--teal-dark); }
+    .page { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { min-height: 520px; display: grid; align-items: end; padding: 72px 0 80px; position: relative; }
+    header::after { content: "PYTHON"; position: absolute; right: -20px; top: 72px; color: rgba(8, 127, 140, 0.1); font: 900 clamp(5rem, 18vw, 13rem)/0.8 Arial, sans-serif; letter-spacing: 0.04em; transform: rotate(-7deg); pointer-events: none; }
+    .eyebrow { color: var(--coral); font: 700 0.78rem/1 Arial, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; }
+    h1, h2, h3 { line-height: 1.1; margin: 0 0 18px; }
+    h1 { max-width: 760px; font-size: clamp(3.2rem, 8vw, 6.8rem); letter-spacing: -0.04em; }
+    h2 { font-size: clamp(2rem, 4vw, 3.3rem); }
+    h3 { font-size: 1.45rem; color: var(--teal-dark); }
+    .lead { max-width: 700px; margin: 0; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.35rem); }
+    nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; position: relative; z-index: 1; }
+    nav a { padding: 8px 14px; border: 1px solid var(--line); background: rgba(255, 253, 248, 0.75); text-decoration: none; font: 700 0.82rem Arial, sans-serif; }
+    nav a:hover { border-color: var(--teal); color: var(--teal); }
+    main { background: var(--surface); box-shadow: var(--shadow); }
+    section { padding: clamp(34px, 6vw, 72px); border-top: 1px solid var(--line); }
+    .section-intro { max-width: 760px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .tile, .role, details { border: 1px solid var(--line); background: #fff; }
+    .tile { padding: 24px; min-height: 190px; }
+    .tile strong { display: block; margin-bottom: 8px; color: var(--coral); font: 700 0.76rem Arial, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+    .tile p, .role p { margin: 0; color: var(--muted); }
+    .roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 28px; }
+    .role { padding: 20px 22px; }
+    .role h3 { margin-bottom: 8px; }
+    .role ul { margin: 10px 0 0; padding-left: 20px; color: var(--muted); }
+    .steps { counter-reset: step; display: grid; gap: 12px; margin-top: 26px; }
+    .step { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; }
+    .step::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 40px; height: 40px; background: var(--teal); color: white; font: 700 1rem Arial, sans-serif; }
+    .step p { margin: 0; color: var(--muted); }
+    details { margin-top: 10px; padding: 16px 20px; }
+    summary { cursor: pointer; color: var(--teal-dark); font-weight: 700; }
+    details p { margin: 12px 0 0; color: var(--muted); }
+    .callout { border-left: 5px solid var(--coral); padding: 20px 24px; background: #fff4ec; color: var(--muted); }
+    footer { padding: 32px 0 54px; color: var(--muted); font: 0.85rem Arial, sans-serif; }
+    @media (max-width: 760px) { .page { width: min(100% - 20px, 1120px); } header { min-height: 470px; padding-top: 52px; } header::after { right: -10px; top: 80px; font-size: 5rem; } .grid, .roles { grid-template-columns: 1fr; } section { padding: 34px 24px; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="eyebrow">Full Stack Data Science and AI</div>
+        <h1>Why learn Python for data science and AI?</h1>
+        <p class="lead">A practical, beginner-friendly programming path that grows from core data structures into machine learning, web development, automation, and intelligent applications.</p>
+        <nav aria-label="Page sections"><a href="#foundations">Foundations</a><a href="#applications">Applications</a><a href="#careers">Careers</a><a href="#faqs">FAQs</a></nav>
+      </div>
+    </header>
+    <main>
+      <section id="foundations">
+        <h2>Python, clearly explained</h2>
+        <p class="section-intro">Python is one of the world's most widely used programming languages. Its readable syntax makes it a strong first language, while its ecosystem supports serious work in data science, artificial intelligence, web services, scientific computing, and automation.</p>
+        <div class="grid"><article class="tile"><strong>01 / Data</strong><h3>Scientific computing</h3><p>Use NumPy, SciPy, and pandas for numerical computation, data analysis, and complex problem solving.</p></article><article class="tile"><strong>02 / Intelligence</strong><h3>Machine learning</h3><p>Build predictive models and data-driven systems with tools such as TensorFlow, PyTorch, and scikit-learn.</p></article><article class="tile"><strong>03 / Language</strong><h3>Text processing</h3><p>Explore natural language understanding, sentiment analysis, and summarisation with NLTK and spaCy.</p></article></div>
+        <h3 style="margin-top:44px">Core programming examples</h3><p class="section-intro">Lists, strings, dictionaries, tuples, and sets are the building blocks for manipulating data. Practice adding, removing, slicing, searching, unpacking, merging, and removing duplicates before moving into larger libraries and projects.</p>
+      </section>
+      <section id="applications">
+        <h2>Where Python is used</h2>
+        <div class="grid"><article class="tile"><strong>Build</strong><h3>Web development</h3><p>Django and Flask support authentication, databases, APIs, and scalable web applications alongside HTML, CSS, and JavaScript.</p></article><article class="tile"><strong>Collect</strong><h3>Web scraping</h3><p>Scrapy, Beautiful Soup, and Selenium can gather prices, news, weather, and other useful information automatically.</p></article><article class="tile"><strong>Create</strong><h3>Desktop and games</h3><p>Tkinter, PyQt, Pygame, and related tools help create interactive desktop applications, games, simulations, and interfaces.</p></article><article class="tile"><strong>Operate</strong><h3>Business and cloud</h3><p>Python powers business applications, cloud resources, DevOps workflows, monitoring, and automation with platforms such as AWS and Azure.</p></article><article class="tile"><strong>Process</strong><h3>Images and media</h3><p>OpenCV, Pillow, FFmpeg, and Librosa support image processing, computer vision, audio analysis, video editing, and streaming.</p></article><article class="tile"><strong>Protect</strong><h3>Testing and quality</h3><p>pytest, unittest, and Selenium help teams test applications, automate checks, and improve reliability under diverse conditions.</p></article></div>
+      </section>
+      <section id="careers">
+        <h2>Career opportunities</h2><p class="section-intro">Python skills transfer across software, data, infrastructure, research, and product teams. A strong portfolio combines programming fundamentals with communication, testing, version control, and domain knowledge.</p>
+        <div class="roles"><article class="role"><h3>Web and Backend Developer</h3><ul><li>Builds websites, APIs, databases, and authentication.</li><li>Uses Django, Flask, or Pyramid to create secure services.</li></ul></article><article class="role"><h3>Data Scientist</h3><ul><li>Analyses and visualises large datasets.</li><li>Uses pandas, NumPy, and scikit-learn for modelling.</li></ul></article><article class="role"><h3>Machine Learning Engineer</h3><ul><li>Designs, deploys, and maintains machine learning models.</li><li>Works with TensorFlow, PyTorch, and natural language tools.</li></ul></article><article class="role"><h3>Software and Systems Engineer</h3><ul><li>Develops, tests, and maintains production applications.</li><li>Automates and optimises system performance with Python tooling.</li></ul></article><article class="role"><h3>DevOps and Cloud Engineer</h3><ul><li>Supports continuous integration, delivery, and containers.</li><li>Manages AWS or Azure resources with boto3 or azure-sdk.</li></ul></article><article class="role"><h3>Research and QA Engineer</h3><ul><li>Uses Python in AI, robotics, biotechnology, and numerical research.</li><li>Builds automated tests with pytest and Selenium.</li></ul></article><article class="role"><h3>Mobile and Game Developer</h3><ul><li>Creates cross-platform applications with Kivy or PyQt.</li><li>Builds games and simulations with Pygame or Pyglet.</li></ul></article><article class="role"><h3>Product and Technical Support</h3><ul><li>Uses data and feedback to guide product planning.</li><li>Automates troubleshooting and server communication with requests and logging.</li></ul></article></div>
+      </section>
+      <section>
+        <h2>The power of the ecosystem</h2><p class="section-intro">Python is used by organisations such as Google, Meta, Netflix, Uber, and Spotify for data, machine learning, websites, and internal tools. The wider community also shares influential projects, including PyTorch, Metaflow, and Ludwig.</p><div class="callout">Learning Python is more than learning a language: it is an entry point into a large community and a skill that can be applied in technology, finance, healthcare, education, research, and many other industries.</div>
+        <h3 style="margin-top:40px">A focused learning path</h3><div class="steps"><div class="step"><p>Start with syntax, variables, control flow, functions, and modules.</p></div><div class="step"><p>Practice lists, dictionaries, tuples, sets, and strings until data manipulation feels natural.</p></div><div class="step"><p>Move into NumPy, pandas, visualisation, and exploratory data analysis.</p></div><div class="step"><p>Build projects using web frameworks, machine learning, automation, or AI.</p></div></div>
+      </section>
+      <section id="faqs">
+        <h2>Python programming FAQs</h2><details open><summary>Is Python hard to learn for beginners?</summary><p>Python is considered beginner-friendly because it has readable syntax and a straightforward structure. Consistent practice with small programs is the best way to build confidence.</p></details><details><summary>Can I learn Python in just one month?</summary><p>One month is enough to build a foundation with regular practice. Becoming effective across data science, web development, or AI takes continued study and project work.</p></details><details><summary>How long does it take to finish an entire Python course?</summary><p>The time depends on your starting point, weekly practice, and the depth of the projects. Focus on measurable skills and working examples rather than a fixed calendar deadline.</p></details><details><summary>How do I start learning Python?</summary><p>Begin with syntax and core data structures, then run the notebooks in the repository's <code>01-python</code> directory. Progress from guided exercises to small independent projects.</p></details><details><summary>What can I use Python for?</summary><p>You can use Python for data analysis, machine learning, AI, websites, APIs, automation, scraping, desktop apps, games, testing, cloud operations, and scientific research.</p></details><p style="margin-top:28px;color:var(--muted)">For course enrolment, practical lab support, and further information, connect with the course administration team.</p>
+      </section>
+    </main>
+    <footer>Python Programming Course Information | Full Stack Data Science, GenAI and Agentic AI</footer>
+  </div>
+</body>
+</html>
