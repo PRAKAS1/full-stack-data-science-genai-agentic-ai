@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f4">
+    <title>Model performance | Homewise</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="Homewise home">
+            <span class="brand-mark" aria-hidden="true">H</span>
+            <span>homewise<span class="brand-period">.</span></span>
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="/">Estimate value</a>
+            <a class="nav-current" href="/results" aria-current="page">Model performance</a>
+            <a href="/info">About</a>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <a class="back-link" href="/">← Back to estimator</a>
+        <section class="page-heading">
+            <p class="eyebrow"><span class="status-dot"></span> MODEL SCORECARD</p>
+            <h1>Performance, <span>side by side.</span></h1>
+            <p>Compare how each regression model performed on the held-out test data.</p>
+        </section>
+
+        <section class="best-model-card" aria-label="Best model by R squared score">
+            <div class="best-icon" aria-hidden="true">↗</div>
+            <div>
+                <span class="meta-label">TOP R² SCORE</span>
+                <h2>{{ best_model.Model }}</h2>
+            </div>
+            <strong class="best-score">{{ "%.3f"|format(best_model.R2) }}</strong>
+        </section>
+
+        <section class="chart-card" aria-labelledby="chart-title">
+            <div class="table-heading chart-heading">
+                <div>
+                    <p class="eyebrow">MODEL COMPARISON</p>
+                    <h2 id="chart-title">R² score by model</h2>
+                </div>
+                <span class="chart-axis-label">Higher is better</span>
+            </div>
+            <p class="chart-description">
+                Scores are plotted from −1 to 1. Values outside this range are clipped in the chart;
+                their actual scores remain visible beside each model and in the table below.
+            </p>
+            <div class="chart-axis" aria-hidden="true">
+                <span></span>
+                <div class="chart-ticks"><span>−1</span><span>−0.5</span><span>0</span><span>0.5</span><span>1</span></div>
+                <span></span>
+            </div>
+            <div class="score-chart" role="list" aria-label="R squared scores for each model">
+                {% for item in chart_results %}
+                <div class="chart-row" role="listitem" aria-label="{{ item.model }}: R squared {{ item.score_label }}{% if item.is_off_scale %}, off chart scale{% endif %}">
+                    <span class="chart-model">{{ item.model }}</span>
+                    <div class="chart-track" aria-hidden="true">
+                        <span class="chart-bar{% if item.is_negative %} chart-bar-negative{% endif %}"
+                              style="left: {{ item.bar_left }}%; width: {{ item.bar_width }}%;"></span>
+                    </div>
+                    <span class="chart-score">{{ item.score_label }}{% if item.is_off_scale %}<span class="off-scale">off scale</span>{% endif %}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="table-card" aria-labelledby="results-title">
+            <div class="table-heading">
+                <div>
+                    <p class="eyebrow">TEST SET METRICS</p>
+                    <h2 id="results-title">Model evaluation results</h2>
+                </div>
+                <span class="table-count">{{ results|length }} models</span>
+            </div>
+            <div class="table-scroll">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col">MAE <span class="th-hint">lower is better</span></th>
+                            <th scope="col">MSE <span class="th-hint">lower is better</span></th>
+                            <th scope="col">R² <span class="th-hint">higher is better</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in results %}
+                        <tr{% if row.Model == best_model.Model %} class="best-row"{% endif %}>
+                            <th scope="row">
+                                <span class="model-name">{{ row.Model }}</span>
+                                {% if row.Model == best_model.Model %}<span class="best-label">TOP R²</span>{% endif %}
+                            </th>
+                            <td>{{ "%.3g"|format(row.MAE) }}</td>
+                            <td>{{ "%.3g"|format(row.MSE) }}</td>
+                            <td><span class="score-pill">{{ "%.3g"|format(row.R2) }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-note">MAE and MSE measure prediction error; R² indicates how much variation the model explains. Scores reflect this dataset and split only.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="brand brand-small" href="/"><span class="brand-mark" aria-hidden="true">H</span><span>homewise<span class="brand-period">.</span></span></a>
+        <span>Estimates are not a substitute for professional advice.</span>
+    </footer>
+</body>
+</html>

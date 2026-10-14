@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f4">
+    <title>Homewise | Home value estimator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="Homewise home">
+            <span class="brand-mark" aria-hidden="true">H</span>
+            <span>homewise<span class="brand-period">.</span></span>
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="#estimate">Estimate value</a>
+            <a href="#workflow">How it works</a>
+            <a href="/results">Model performance</a>
+            <a href="/info">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="status-dot"></span> DATA-POWERED HOME ESTIMATES</p>
+                <h1>A clearer view of your home's <span>potential.</span></h1>
+                <p class="hero-description">
+                    Explore an estimated home value using neighborhood and property details.
+                    Adjust the inputs and compare a selection of regression models.
+                </p>
+                <div class="trust-note">
+                    <span class="trust-icon" aria-hidden="true">✓</span>
+                    Estimates are generated instantly from your property details.
+                </div>
+            </div>
+
+            <section class="estimate-card" id="estimate" aria-labelledby="form-title">
+                <div class="card-heading">
+                    <div>
+                        <p class="eyebrow">PROPERTY DETAILS</p>
+                        <h2 id="form-title">Build your estimate</h2>
+                    </div>
+                    <span class="step-badge">01 <span>/ 01</span></span>
+                </div>
+
+                <form action="{{ url_for('predict') }}" method="POST" class="estimate-form">
+                    <div class="field-grid">
+                        <div class="field field-wide">
+                            <label for="income">Average area income <span>USD / year</span></label>
+                            <input type="number" step="any" min="0" id="income" name="Avg. Area Income"
+                                   placeholder="Example: 65,000" required>
+                        </div>
+                        <div class="field">
+                            <label for="house-age">Average house age <span>years</span></label>
+                            <input type="number" step="any" min="0" id="house-age" name="Avg. Area House Age"
+                                   placeholder="Example: 5" required>
+                        </div>
+                        <div class="field">
+                            <label for="rooms">Average number of rooms</label>
+                            <input type="number" step="any" min="0" id="rooms" name="Avg. Area Number of Rooms"
+                                   placeholder="Example: 7" required>
+                        </div>
+                        <div class="field">
+                            <label for="bedrooms">Average bedrooms</label>
+                            <input type="number" step="any" min="0" id="bedrooms" name="Avg. Area Number of Bedrooms"
+                                   placeholder="Example: 3" required>
+                        </div>
+                        <div class="field">
+                            <label for="population">Area population</label>
+                            <input type="number" step="any" min="0" id="population" name="Area Population"
+                                   placeholder="Example: 36,000" required>
+                        </div>
+                    </div>
+
+                    <div class="field model-field">
+                        <label for="model">Estimation model</label>
+                        <select id="model" name="model" required>
+                            {% for model_name in model_names %}
+                                <option value="{{ model_name }}">{{ model_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button class="button button-primary button-full" type="submit">
+                        Estimate home value <span aria-hidden="true">↗</span>
+                    </button>
+                    <p class="form-footnote">For informational purposes only. Not a formal appraisal.</p>
+                </form>
+            </section>
+        </section>
+
+        <section class="feature-row" aria-label="About this estimator">
+            <div class="feature-item">
+                <span class="feature-number">01</span>
+                <div><h3>Enter the basics</h3><p>Use average neighborhood and home details.</p></div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-number">02</span>
+                <div><h3>Choose a model</h3><p>Compare different approaches to regression.</p></div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-number">03</span>
+                <div><h3>Explore the result</h3><p>See an estimate and review model performance.</p></div>
+            </div>
+        </section>
+
+        <section class="workflow-section" id="workflow" aria-labelledby="workflow-title">
+            <div class="workflow-heading">
+                <div>
+                    <p class="eyebrow"><span class="status-dot"></span> FROM DATA TO ESTIMATE</p>
+                    <h2 id="workflow-title">How Homewise works</h2>
+                    <p>Models are trained and evaluated first, then used by the app to estimate a home value.</p>
+                </div>
+                <a class="workflow-link" href="/results">See model scores <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="workflow-card">
+                <pre class="mermaid">
+flowchart LR
+    subgraph training["MODEL TRAINING"]
+        data["USA Housing dataset"] --> features["Prepare features and target"]
+        features --> split["Train and test split"]
+        split --> evaluate["Train and evaluate models"]
+        evaluate -->|save| artifacts["Model files"]
+        evaluate -->|save| metrics["Evaluation metrics"]
+    end
+
+    subgraph prediction["HOME VALUE ESTIMATE"]
+        details["Property details"] --> selection["Choose a model"]
+        selection --> predict["Generate estimate"]
+        predict --> value["Estimated home value"]
+    end
+
+    artifacts --> selection
+    metrics --> scorecard["Model performance page"]
+                </pre>
+                <noscript>
+                    <p class="chart-fallback">Enable JavaScript to view the workflow diagram. The diagram describes the model training and prediction steps.</p>
+                </noscript>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="brand brand-small" href="/"><span class="brand-mark" aria-hidden="true">H</span><span>homewise<span class="brand-period">.</span></span></a>
+        <span>Estimates are not a substitute for professional advice.</span>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        if (window.mermaid) {
+            window.mermaid.initialize({
+                startOnLoad: true,
+                theme: "base",
+                securityLevel: "strict",
+                themeVariables: {
+                    primaryColor: "#edf3eb",
+                    primaryTextColor: "#1e302b",
+                    primaryBorderColor: "#cbd8c5",
+                    lineColor: "#78926c",
+                    secondaryColor: "#f7f7f4",
+                    tertiaryColor: "#ffffff",
+                    fontSize: "16px",
+                    fontFamily: "Inter, system-ui, sans-serif"
+                }
+            });
+        }
+    </script>
+</body>
+</html>
